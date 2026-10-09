@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ຄຳຖາມຈາກໃຈ ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+  font-family:system-ui,-apple-system,"Noto Sans Lao",sans-serif;
+  background:linear-gradient(135deg,#ffd6e7,#fff1f6,#e8d9ff);
+  overflow:hidden;
+}
+.card{
+  width:min(92%,430px); padding:34px 24px; text-align:center;
+  background:rgba(255,255,255,.86); border-radius:28px;
+  box-shadow:0 20px 60px rgba(120,50,100,.2);
+  position:relative; z-index:2;
+}
+.heart{font-size:64px; animation:beat 1.2s infinite}
+h1{color:#d63384;font-size:28px;margin:10px 0}
+p{color:#666;font-size:17px;line-height:1.7}
+.buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+button{
+  border:0;border-radius:999px;padding:13px 24px;font-size:17px;
+  cursor:pointer;transition:.2s;font-family:inherit
+}
+.yes{background:#e83e8c;color:#fff;box-shadow:0 8px 20px #e83e8c44}
+.no{background:#f1f1f1;color:#555}
+button:hover{transform:scale(1.06)}
+#result{display:none;color:#d63384;font-size:22px;font-weight:700;margin-top:22px}
+.float{
+  position:fixed; bottom:-30px; font-size:24px; opacity:.7;
+  animation:up 6s linear forwards; z-index:1
+}
+@keyframes beat{50%{transform:scale(1.12)}}
+@keyframes up{to{transform:translateY(-110vh) rotate(25deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="heart">❤️</div>
+  <h1>ມີຫຍັງຢາກຖາມເຈົ້າ...</h1>
+  <p>ຂ້ອຍມີຄຳຖາມໜຶ່ງຈາກໃຈ<br>ເຈົ້າຈະໃຫ້ໂອກາດຂ້ອຍບໍ? 💕</p>
+  <h1>ເປັນແຟນກັນບໍ? 🥰</h1>
+  <div class="buttons">
+    <button class="yes" onclick="yes()">ຕົກລົງ ❤️</button>
+    <button class="no" onclick="later()">ຂໍຄິດກ່ອນ 😳</button>
+  </div>
+  <div id="result"></div>
+</div>
+<script>
+function hearts(){
+  for(let i=0;i<18;i++){
+    const x=document.createElement('div'); x.className='float';
+    x.textContent=['❤️','💕','💗','💖'][Math.floor(Math.random()*4)];
+    x.style.left=Math.random()*100+'vw';
+    x.style.animationDelay=Math.random()*1.5+'s';
+    document.body.appendChild(x);
+    setTimeout(()=>x.remove(),7000);
+  }
+}
+function yes(){
+  document.getElementById('result').style.display='block';
+  document.getElementById('result').textContent='ດີໃຈຫຼາຍ! ❤️🥰';
+  hearts();
+}
+function later(){
+  document.getElementById('result').style.display='block';
+  document.getElementById('result').textContent='ໄດ້ເລີຍ 😊 ຄ່ອຍໆຄິດກໍໄດ້';
+}
+</script>
+</body>
+</html>
